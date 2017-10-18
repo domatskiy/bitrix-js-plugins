@@ -12,6 +12,7 @@ class BitrixJSPlugins
 {
     protected $plugins = array();
     protected $use_old = false;
+	protected $replace_template_path = false;
 
     /**
      * @var \Domatskiy\BitrixJSPlugins
@@ -36,6 +37,9 @@ class BitrixJSPlugins
 
     public function add($name, array $arJS, array $arCss = array())
     {
+		if(!defined(SITE_TEMPLATE_PATH))
+            $this->replace_template_path = true;
+		
         if(!$name || !is_string($name))
             throw new \Exception('not correct name');
 
@@ -66,13 +70,25 @@ class BitrixJSPlugins
             if($js)
             {
                 foreach ($js as $path)
-                    $APPLICATION->AddHeadScript($path);
+				{
+					if($this->replace_template_path)
+                        $path = str_replace('SITE_TEMPLATE_PATH', SITE_TEMPLATE_PATH, $path);
+					
+					$APPLICATION->AddHeadScript($path);
+				}
+
             }
 
             if($css)
             {
                 foreach ($css as $path)
-                    $APPLICATION->SetAdditionalCSS($path);
+				{
+					if($this->replace_template_path)
+                        $path = str_replace('SITE_TEMPLATE_PATH', SITE_TEMPLATE_PATH, $path);
+					
+					$APPLICATION->SetAdditionalCSS($path);
+				}
+                    
 
             }
         }
