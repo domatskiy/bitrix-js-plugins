@@ -2,7 +2,7 @@
     "name": "domatskiy/bitrix-js-plugins",
     "type": "library",
     "description": "use angular bitrix",
-    "keywords": ["angular", "bitrix"],
+    "keywords": ["plugins", "bitrix"],
     "homepage": "http://domatskiy.ru",
     "license": "MIT",
     "authors": [
@@ -20,7 +20,7 @@
             "type":"package",
             "package":{
                 "name":"domatskiy/bitrix-js-plugins",
-                "version":"1.0.1",
+                "version":"1.0.2",
                 "source":{
                     "type":"git",
                     "url":"https://github.com/domatskiy/bitrix-js-plugins",

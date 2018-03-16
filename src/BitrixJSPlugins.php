@@ -7,6 +7,7 @@ namespace Domatskiy;
  */
 
 use Bitrix\Main\Page\Asset;
+use Domatskiy\BitrixJSPlugins\NotFoundException;
 
 class BitrixJSPlugins
 {
@@ -53,7 +54,7 @@ class BitrixJSPlugins
     public function init($plugin_name)
     {
         if(!array_key_exists($plugin_name, $this->plugins))
-            throw new \Exception('plugin not forund');
+            throw new NotFoundException('plugin not found');
 
         $plugin = $this->plugins[$plugin_name];
         $js = $plugin['js'];
